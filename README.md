@@ -1,0 +1,2 @@
+# throwingExceptions
+Practicing exceptions
