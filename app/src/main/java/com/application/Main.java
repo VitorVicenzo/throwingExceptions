@@ -15,23 +15,27 @@ public class Main {
             System.out.print("Number: ");
             int number = sc.nextInt();
             System.out.print("Holder: ");
+            sc.nextLine();
             String holder = sc.nextLine();
             System.out.print("Initial balance: ");
-            double balance = sc.nextDouble();
+            Double balance = sc.nextDouble();
             System.out.print("Withdraw limit:");
-            double withdrawLimit = sc.nextDouble();
+            Double withdrawLimit = sc.nextDouble();
             Account user = new Account(number, holder, balance, withdrawLimit);
             System.out.println();
 
             System.out.print("Enter amount for withdraw: ");
             double amount = sc.nextDouble();
             user.withdraw(amount);
-        } 
-        catch (BalanceException e) {
+            System.out.println("New balance: " + user.getBalance());
+            
+        } catch (BalanceException e) {
             System.out.println("Withdraw error: " + e.getMessage());
-        }
-        catch (WithdrawLimitException e){
+        } catch (WithdrawLimitException e) {
             System.out.println("Withdraw error: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.out.println("Unexpected error.");
         }
+
     }
 }

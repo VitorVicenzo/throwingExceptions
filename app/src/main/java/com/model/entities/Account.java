@@ -50,7 +50,7 @@ public class Account {
     }
 
     public void withdraw(Double amount) {
-        if (balance < amount) {
+        if (balance < amount && amount < withdrawLimit) {
             throw new BalanceException("Not enough balance.");
         }
         else if (amount > withdrawLimit){
