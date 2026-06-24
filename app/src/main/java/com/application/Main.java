@@ -3,6 +3,8 @@ package com.application;
 import java.util.Scanner;
 
 import com.model.entities.Account;
+import com.model.exceptions.BalanceException;
+import com.model.exceptions.WithdrawLimitException;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,8 +26,12 @@ public class Main {
             System.out.print("Enter amount for withdraw: ");
             double amount = sc.nextDouble();
             user.withdraw(amount);
-        } catch (Exception e) {
-
+        } 
+        catch (BalanceException e) {
+            System.out.println("Withdraw error: " + e.getMessage());
+        }
+        catch (WithdrawLimitException e){
+            System.out.println("Withdraw error: " + e.getMessage());
         }
     }
 }
